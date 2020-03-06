@@ -13,3 +13,6 @@ This repo includes four primary files (three to operate the webpage and one note
   
 - Mission_to_Mars/mission_to_mars.ipynb
   - Our jupyter notebook that was initially used to find the correct syntax for the various scrape asks.
+  
+  
+ ![Webpage Example](https://github.com/jpicca/web-scraping-challenge/blob/master/screenshots/screenshot1.png)
