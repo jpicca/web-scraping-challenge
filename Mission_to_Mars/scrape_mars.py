@@ -3,17 +3,20 @@ from splinter import Browser
 from bs4 import BeautifulSoup
 import time
 
+# Initialize our browser to scrape data
 def init_browser():
     # @NOTE: Replace the path with your actual path to the chromedriver
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
     return Browser("chrome", **executable_path, headless=False)
 
+# Get our BeautifulSoup object
 def getSoup(url):
     browser = init_browser()
 
     url = url #"https://mars.nasa.gov/news/"
     browser.visit(url)
     
+    # Sleep to allow HTML to load
     time.sleep(5)
 
     html = browser.html
@@ -22,6 +25,7 @@ def getSoup(url):
     
     return soup
 
+# Use this function to brose back and forth on the hemisphere page
 def click_around(url):
     
     # Create empty list
@@ -37,6 +41,7 @@ def click_around(url):
     html = browser.html
     soup = BeautifulSoup(html, "html.parser")
     
+    # Loop through h3 elements, which contain the required info
     for hemElem in soup.find_all('h3'):
         
         hemDict = {}
@@ -66,6 +71,7 @@ def click_around(url):
     
     return hemisphere_image_urls
 
+# Define our master scrape function to grab all information
 def scrape():
 
     ##
